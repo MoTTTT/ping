@@ -29,7 +29,7 @@ pipeline {
     stage('Re-Run Docker image') {
         steps {
 	    sh '''
-		docker stop hello
+		docker stop ping
     		docker rm ping
     		docker run -p 8090:8080 --name ping -t -d motsdockerid/ping:latest -v /apps:/apps:rw
     	    '''

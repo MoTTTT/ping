@@ -22,11 +22,11 @@ pipeline {
     }
 
     stage('Run Docker image First time') {
+        when { branch "master" }
         steps { sh ''' docker run -p 8090:8080 --name ping -t -d motsdockerid/ping:latest -v /apps:/apps:rw ''' }
     }
 
     stage('Re-Run Docker image') {
-        when { branch "master" }
         steps {
 	    sh '''
 		docker stop hello

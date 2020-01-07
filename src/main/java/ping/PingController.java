@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PingController {
     @RequestMapping("/")
     public String index() {
-	return "HelloController Response";
+	return "Ping Acknowledged.";
     }
 }

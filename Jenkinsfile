@@ -25,11 +25,11 @@ pipeline {
         when { branch "master" }
         steps { 
 	    sh ''' 
-		docker run 
-			-p 8090:8080 
-			--name ping 
-			-t 
-			-d motsdockerid/ping:latest
+		docker run \
+			-p 8090:8080 \
+			--name ping \
+			-t \
+			-d motsdockerid/ping:latest \
 			--mount source=logs, target=/apps/logs
 	    ''' }
     }
@@ -39,11 +39,11 @@ pipeline {
 	    sh '''
 		docker stop ping
     		docker rm ping
-		docker run 
-			-p 8090:8080 
-			--name ping 
-			-t 
-			-d motsdockerid/ping:latest
+		docker run \
+			-p 8090:8080 \
+			--name ping \
+			-t \
+			-d motsdockerid/ping:latest \
 			--mount source=logs, target=/apps/logs
     	    '''
 	}

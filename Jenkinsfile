@@ -23,7 +23,7 @@ pipeline {
 
     stage('Run Docker image First time') {
         when { branch "master" }
-        steps { sh ''' docker run -p 8090:8080 --name ping -t -d motsdockerid/ping:latest -v /apps:/apps:rw ''' }
+        steps { sh ''' docker run -p 8090:8080 --name ping -t -d motsdockerid/ping:latest -v logs:/apps/logs:rw ''' }
     }
 
     stage('Re-Run Docker image') {
@@ -31,7 +31,7 @@ pipeline {
 	    sh '''
 		docker stop ping
     		docker rm ping
-    		docker run -p 8090:8080 --name ping -t -d motsdockerid/ping:latest -v /apps:/apps:rw
+    		docker run -p 8090:8080 --name ping -t -d motsdockerid/ping:latest -v logs:/apps/logs:rw
     	    '''
 	}
     }

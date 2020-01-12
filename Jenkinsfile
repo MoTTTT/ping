@@ -30,7 +30,7 @@ pipeline {
 			--name ping \
 			-t \
 			-d motsdockerid/ping:latest \
-			--mount source=logs,target=/apps/logs
+			--mount type=bind,source=logs,target=/apps/logs
 	    ''' }
     }
 
@@ -44,7 +44,7 @@ pipeline {
 			--name ping \
 			-t \
 			-d motsdockerid/ping:latest \
-			--mount source=logs,target=/apps/logs
+			--mount type=bind,source=logs,target=/apps/logs
     	    '''
 	}
     }
